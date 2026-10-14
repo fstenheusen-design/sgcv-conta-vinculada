@@ -1,16 +1,17 @@
 from fastapi import FastAPI
 
-from app.api import auth, cadastros, medicao
+from app.api import auth, cadastros, medicao, relatorios
 
 app = FastAPI(
     title="SGCV — Sistema de Gestão da Conta Vinculada",
     description="Controle da Conta-Depósito Vinculada (IN 05/2017) — DETRAN/RO",
-    version="0.3.0",
+    version="0.4.0",
 )
 
 app.include_router(auth.router)
 app.include_router(cadastros.router)
 app.include_router(medicao.router)
+app.include_router(relatorios.router)
 
 
 @app.get("/health", tags=["Sistema"])
